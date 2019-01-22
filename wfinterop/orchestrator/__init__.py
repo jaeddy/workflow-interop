@@ -18,7 +18,7 @@ from IPython.display import display, clear_output
 from ..config import queue_config, wes_config
 from ..util import ctime2datetime, convert_timedelta
 from ..wes import WES
-from ..trs2wes import (store_verification, 
+from ..trs2wes import (store_verification,
                        build_wes_request,
                        fetch_queue_workflow)
 from ..queue import (get_submission_bundle,

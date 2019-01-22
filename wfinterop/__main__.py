@@ -36,6 +36,7 @@ def main(verbosity):
     else:
         logger.setLevel(logging.INFO)
 
+
 main.add_command(config_cli.config)
 main.add_command(run_cli.run)
 

@@ -44,4 +44,3 @@ def add_wes(data):
     Add a Workflow Execution Service endpoint.
     """
     pass
-
