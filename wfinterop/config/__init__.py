@@ -11,7 +11,7 @@ This provides functions to save and get values into these three sections.
 import logging
 import os
 
-from wfinterop.util import get_yaml, save_yaml, heredoc
+from ..util import get_yaml, save_yaml, heredoc
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

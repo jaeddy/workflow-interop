@@ -7,7 +7,8 @@ import pkg_resources
 import click
 
 from logging.config import fileConfig
-from wfinterop.orchestrator import monitor
+
+from .config import commands as config_group
 
 config_path = os.path.dirname(os.path.realpath(__file__))
 fileConfig(os.path.join(config_path, 'logging_config.ini'),
@@ -15,12 +16,13 @@ fileConfig(os.path.join(config_path, 'logging_config.ini'),
 logger = logging.getLogger()
 logger.info("Starting `ga4gh-testbed`")
 
+
 @click.group()
 @click.option('--quiet', 'verbosity', flag_value='quiet',
-              help=("only display printed outputs in the console - "
-                    "i.e., no log messages"))
+              help=("Only display printed outputs in the console - "
+                    "i.e., no log messages."))
 @click.option('--debug', 'verbosity', flag_value='debug',
-              help="include all debug log messages in the console")
+              help="Include all debug log messages in the console.")
 def main(verbosity):
     """
     Command line interface for the `wfinterop` library.
@@ -31,6 +33,8 @@ def main(verbosity):
         logger.setLevel(logging.DEBUG)
     else:
         logger.setLevel(logging.INFO)
+
+main.add_command(config_group.config)
 
 
 if __name__ == '__main__':
