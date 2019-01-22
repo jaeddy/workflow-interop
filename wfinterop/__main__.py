@@ -1,27 +1,37 @@
 #!/usr/bin/env python
-
+import os
 import sys
-import argparse
-import pkg_resources  # part of setuptools
 import logging
+import pkg_resources
+
+import click
+
+from logging.config import fileConfig
 from wfinterop.orchestrator import monitor
 
-logging.basicConfig(level=logging.INFO)
+config_path = os.path.dirname(os.path.realpath(__file__))
+fileConfig(os.path.join(config_path, 'logging_config.ini'),
+           disable_existing_loggers=False)
+logger = logging.getLogger()
+logger.info("Starting `ga4gh-testbed`")
 
-
-def main(argv=sys.argv[1:]):
-
-    parser = argparse.ArgumentParser(description='Synapse Workflow Orchestrator')
-    parser.add_argument("--version", action="store_true", default=False)
-    args = parser.parse_args(argv)
-
-    if args.version:
-        pkg = pkg_resources.require('synapse-orchestrator')
-        print(u"%s %s" % (sys.argv[0], pkg[0].version))
-        exit(0)
-
-    monitor()
+@click.group()
+@click.option('--quiet', 'verbosity', flag_value='quiet',
+              help=("only display printed outputs in the console - "
+                    "i.e., no log messages"))
+@click.option('--debug', 'verbosity', flag_value='debug',
+              help="include all debug log messages in the console")
+def main(verbosity):
+    """
+    Command line interface for the `wfinterop` library.
+    """
+    if verbosity == 'quiet':
+        logger.setLevel(logging.ERROR)
+    elif verbosity == 'debug':
+        logger.setLevel(logging.DEBUG)
+    else:
+        logger.setLevel(logging.INFO)
 
 
 if __name__ == '__main__':
-    main(sys.argv[1:])
+    main()
