@@ -2,4 +2,9 @@ wes-service<=2.9
 pandas
 IPython==5.8.0
 future
-bravado
+bravado-core==4.13.4
+bravado==9.2.2
+jsonschema>=2.6.0,<3
+webcolors
+strict-rfc3339
+rfc3987
