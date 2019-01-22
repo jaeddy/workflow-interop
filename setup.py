@@ -26,6 +26,7 @@ setup(
     packages=['wfinterop'],
     package_data={
         'wfinterop': [
+            'logging_config.ini'
             'workflow_execution_service.swagger.yaml',
             'ga4gh-tool-discovery.yaml'
         ]
@@ -34,6 +35,9 @@ setup(
     download_url='https://github.com/Sage-Bionetworks/workflow-interop',
     long_description=long_description,
     install_requires=install_requires,
+    entry_points={
+        'console_scripts': 'ga4gh-testbed = wfinterop.__main__:main'
+    },
     setup_requires=['pytest-runner'],
     tests_require=['pytest', 'pytest-cov', 'mock'],
     license='Apache 2.0',
