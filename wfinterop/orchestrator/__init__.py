@@ -15,16 +15,16 @@ import datetime as dt
 
 from IPython.display import display, clear_output
 
-from wfinterop.config import queue_config, wes_config
-from wfinterop.util import ctime2datetime, convert_timedelta
-from wfinterop.wes import WES
-from wfinterop.trs2wes import store_verification
-from wfinterop.trs2wes import build_wes_request
-from wfinterop.trs2wes import fetch_queue_workflow
-from wfinterop.queue import get_submission_bundle
-from wfinterop.queue import get_submissions
-from wfinterop.queue import create_submission
-from wfinterop.queue import update_submission
+from ..config import queue_config, wes_config
+from ..util import ctime2datetime, convert_timedelta
+from ..wes import WES
+from ..trs2wes import (store_verification, 
+                       build_wes_request,
+                       fetch_queue_workflow)
+from ..queue import (get_submission_bundle,
+                     get_submissions,
+                     create_submission,
+                     update_submission)
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)

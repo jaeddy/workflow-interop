@@ -8,7 +8,9 @@ import click
 
 from logging.config import fileConfig
 
-from .config import commands as config_group
+from .config import commands as config_cli
+from .orchestrator import commands as run_cli
+
 
 config_path = os.path.dirname(os.path.realpath(__file__))
 fileConfig(os.path.join(config_path, 'logging_config.ini'),
@@ -34,7 +36,8 @@ def main(verbosity):
     else:
         logger.setLevel(logging.INFO)
 
-main.add_command(config_group.config)
+main.add_command(config_cli.config)
+main.add_command(run_cli.run)
 
 
 if __name__ == '__main__':
