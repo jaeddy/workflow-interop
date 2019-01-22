@@ -15,13 +15,12 @@ from IPython.display import display
 from itertools import combinations_with_replacement
 from requests.exceptions import ConnectionError
 
-from wfinterop.config import add_queue
-from wfinterop.config import queue_config, set_yaml
-from wfinterop.trs import TRS
-from wfinterop.wes import WES
-from wfinterop.queue import create_submission
-from wfinterop.orchestrator import run_submission, monitor_queue
-from wfinterop.util import get_json, save_json
+from ..config import add_queue, queue_config, set_yaml
+from ..trs import TRS
+from ..wes import WES
+from ..queue import create_submission
+from ..orchestrator import run_submission, monitor_queue
+from ..util import get_json, save_json
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)

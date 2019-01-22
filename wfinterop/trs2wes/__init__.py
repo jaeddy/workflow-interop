@@ -19,10 +19,9 @@ from StringIO import StringIO
 from toil.wdl import wdl_parser
 from wes_service.util import visit
 
-from wfinterop.util import open_file, get_yaml, get_json
-from wfinterop.config import queue_config
-from wfinterop.config import set_yaml
-from wfinterop.trs import TRS
+from ..util import open_file, get_yaml, get_json
+from ..config import queue_config, set_yaml
+from ..trs import TRS
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
