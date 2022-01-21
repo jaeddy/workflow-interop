@@ -1,6 +1,6 @@
 wes-service<=2.9
 pandas
-IPython==5.8.0
+IPython==7.16.3
 future
 bravado-core
 bravado
